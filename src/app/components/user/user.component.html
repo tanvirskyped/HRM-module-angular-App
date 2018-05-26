@@ -1,0 +1,60 @@
+<h1>{{name}}</h1>
+<ul>
+  <h4>Age: {{age}}</h4>
+  <h4>Email: {{email}}</h4>
+  <h4>{{address.street}}, {{address.city}}, {{address.state}}</h4>
+</ul>
+
+<button (click)="onClick()">cilck me</button>
+<button (click)="toggleEdit()">Edit User</button>
+
+<div *ngIf = "isEdit">
+  <h1>Edit User</h1>
+  <form>
+    <div>
+      <label for="name">Name:</label><br>
+      <input type="text" [(ngModel)] = "name" name="name">
+    </div>
+    <div>
+      <label for="age">Age:</label><br>
+      <input type="number" [(ngModel)] = "age" name="age">
+    </div>
+    <div>
+      <label for="email">Email:</label><br>
+      <input type="text" [(ngModel)] = "email" name="email">
+    </div>
+    <div>
+      <label for="street">Street:</label><br>
+      <input type="text" [(ngModel)] = "address.street" name="street">
+    </div>
+    <div>
+      <label for="city">City:</label><br>
+      <input type="text" [(ngModel)] = "address.city" name="city">
+    </div>
+    <div>
+      <label for="state">State:</label><br>
+      <input type="text" [(ngModel)] = "address.state" name="state">
+    </div>
+  </form>
+</div>
+
+<h1>Posts:</h1>
+<div *ngFor = "let post of posts">
+  <h4>ID: {{post.id}}</h4>
+  <h4>Title: {{post.title}}</h4>
+  <!-- <h4>Body: {{post.body}}</h4>
+  <h4>userID: {{post.userId}}</h4> -->
+</div>
+<br>
+<form (submit)="add(ref.value)">
+  <div>
+    <label for="ref">Add ref:</label>
+    <input type="text" #ref>
+  </div>
+</form>
+
+<h3>Ref:</h3>
+<ul>
+  <li *ngFor = "let ref of references; let i = index">{{i+ 1}} - {{ref}} <button (click)="delete(ref)">X</button></li>
+</ul>
+
